@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YT Hologram Extractor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="app.css"/>
+</head>
+<body>
+
+  <!-- Hologram background effects -->
+  <div class="grid-bg"></div>
+  <div class="scanline"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">⬡ YT HOLOGRAM EXTRACTOR</div>
+    <div class="designer">Design by <span>Nguyên Hồng</span></div>
+  </header>
+
+  <!-- Mode tabs -->
+  <div class="tabs">
+    <button class="tab active" data-mode="1">⚡ NHẬP LINK TRỰC TIẾP</button>
+    <button class="tab" data-mode="2">📊 WORKFLOW EXCEL</button>
+  </div>
+
+  <!-- Mode 1 Panel -->
+  <div id="mode1" class="panel active">
+    <div class="input-row">
+      <input id="ytUrl" type="text" placeholder="Paste link YouTube vào đây..."/>
+      <input id="kenhInput" type="text" placeholder="Kênh (tự điền)..." style="width:150px"/>
+      <button id="fetchBtn" class="btn-primary">⚡ FETCH</button>
+    </div>
+    <div id="progress1" class="progress hidden"></div>
+  </div>
+
+  <!-- Mode 2 Panel -->
+  <div id="mode2" class="panel hidden">
+    <div class="workflow-steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <button id="downloadTemplate" class="btn-secondary">⬇ TẢI TEMPLATE EXCEL</button>
+        <p>Template là CSV — mở bằng Excel, điền data, giữ nguyên .csv khi lưu</p>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div id="uploadArea" class="upload-area">
+          <input type="file" id="fileInput" accept=".xlsx,.csv" hidden/>
+          <label for="fileInput">📁 Upload Excel / CSV</label>
+          <p id="fileName">Chưa chọn file</p>
+        </div>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <button id="fetchAllBtn" class="btn-primary" disabled>⚡ AUTO FETCH ALL</button>
+        <div id="progress2" class="progress hidden"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Results section (shared) -->
+  <div id="results" class="results hidden">
+    <div class="results-header">
+      <span id="resultCount">0 video</span>
+      <button id="exportBtn" class="btn-export">📥 XUẤT EXCEL</button>
+    </div>
+    <div class="table-container">
+      <table id="dataTable">
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Kênh</th>
+            <th>Tên kênh YT</th>
+            <th>Link video</th>
+            <th>Tiêu đề</th>
+            <th>Tiêu đề (VI)</th>
+            <th>Thumbnail</th>
+            <th>Transcript</th>
+            <th>Thời lượng</th>
+            <th>Số view</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Status bar -->
+  <div id="statusBar" class="status-bar">READY</div>
+
+  <script src="xlsx-min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

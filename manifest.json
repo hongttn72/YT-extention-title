@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "YT Hologram Extractor",
+  "version": "1.0.0",
+  "description": "Lấy dữ liệu YouTube | Design by Nguyên Hồng",
+  "permissions": ["tabs", "scripting", "storage", "downloads"],
+  "host_permissions": [
+    "*://*.youtube.com/*",
+    "*://api.mymemory.translated.net/*"
+  ],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_title": "YT Hologram Extractor" },
+  "icons": { "48": "icons/icon48.png", "128": "icons/icon128.png" }
+}
